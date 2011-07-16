@@ -102,20 +102,34 @@ var StoryCard = new Class({
 		'float': 'right'
 	},
 
+    divLabelsContainer:null,
+    divLabelsContainerStyle:
+    {
+        width: '100%',
+        height: '10%',
+        color: 'black',
+        'font-style': 'normal',
+        'font-weight': 'normal',
+        'font-family': 'Courier New, Verdana',
+        'text-align': 'left',
+        'float': 'left',
+        'font-size': '12px'
+    },
 
 	//constructor
-	initialize: function(description, state, type, owner, points)
+	initialize: function(description, state, type, owner, points, labels)
 	{
     	this.description = description;
     	this.state = state;
     	this.type = type;
     	this.owner = owner;
     	this.points = points;
+    	this.labels = labels;
 		this.createDivContainer();
+		this.createDivLabels();
 		this.createDivDescription();
 		this.createDivOwner();
 		this.createDivTypeAndPoints();
-
 	},
 
 	createDivContainer: function()
@@ -149,7 +163,7 @@ var StoryCard = new Class({
 	{
 		this.divDescription = new Element('div');
 		this.divDescription.setStyles(this.divDescriptionStyle);
-		this.divDescription.set('html',this.description);
+		this.divDescription.set('html', this.description);
 		this.divContainer.grab(this.divDescription);
 	},
 
@@ -160,7 +174,6 @@ var StoryCard = new Class({
 		this.divOwner.set('html', this.owner);
 		this.divContainer.grab(this.divOwner);
 	},
-
 
 	createDivTypeAndPoints: function()
 	{
@@ -182,8 +195,15 @@ var StoryCard = new Class({
 		this.divTypeAndPointsContainer.grab(this.divPointsContainer);
 		this.divPointsContainer.set('html', this.points);
 		this.divContainer.grab(this.divTypeAndPointsContainer);
-
 	},
+
+    createDivLabels: function()
+    {
+        this.divLabelsContainer = new Element('div');
+        this.divLabelsContainer.setStyles(this.divLabelsContainerStyle);
+        this.divLabelsContainer.set('html', this.labels);
+        this.divContainer.grab(this.divLabelsContainer);
+    },
 
 	getContent: function()
 	{

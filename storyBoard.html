@@ -81,7 +81,8 @@ function onStoriesLoaded(responseText, responseXML)
 	                                      getTextContentForElement(story, "current_state"),
 	                                      getTextContentForElement(story, "story_type"),
 	                                      getTextContentForElement(story, "owned_by"),
-	                                      getTextContentForElement(story, "estimate"));
+	                                      getTextContentForElement(story, "estimate"),
+	                                      getTextContentForElement(story, "labels"));
 			if (!doShowStory(storyCard))
 				continue;
 	        storyBoard.addStory(storyCard);
